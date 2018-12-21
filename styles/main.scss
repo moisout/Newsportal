@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import 'variables';
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 40px);
+    height: $header-height;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #000000d5;
+    margin: 20px;
+    box-sizing: border-box;
+    box-shadow: $default-box-shadow;
+
+    .title-container{
+        height: 100%;
+        width: 250px;
+        display: flex;
+
+        .title{
+            margin: auto;
+
+            h1.title-text{
+                font-size: 2rem;
+                color: $font-color;
+                font-family: Montserrat;
+            }
+        }
+    }
+
+    .nav{
+        height: 100%;
+
+        .nav-btn-container{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+
+            .nav-btn{
+                margin: auto;
+                font-size: 1.1rem;
+                color: $font-color;
+                font-family: Montserrat;
+            }
+        }
+    }
+}
