@@ -1,0 +1,29 @@
+@media screen and (max-width: 750px) { 
+    .nav{
+        .nav-btn-container{
+            .nav-btn{
+                .nav-btn-text{
+                    p{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .main{
+        .articles-section{
+            .article-section{
+                margin: 20px 0 !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) { 
+    .nav{
+        .nav-btn-container{
+            display: none !important;
+        }
+    }
+}

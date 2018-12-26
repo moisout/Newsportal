@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import 'variables';
+@import 'responsive';
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
     margin: 0;
@@ -14,13 +15,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     position: fixed;
     top: 0;
     left: 0;
-    width: calc(100% - 40px);
+    width: 100%;
     height: $header-height;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #000000d5;
-    margin: 20px;
+    background-color: $header-background-color; 
     box-sizing: border-box;
     box-shadow: $default-box-shadow;
 
@@ -42,18 +42,110 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
     .nav{
         height: 100%;
+        width: auto;
 
         .nav-btn-container{
             height: 100%;
-            width: 100%;
             display: flex;
             flex-direction: row;
 
             .nav-btn{
-                margin: auto;
-                font-size: 1.1rem;
-                color: $font-color;
-                font-family: Montserrat;
+                display: flex;
+                flex-direction: row;
+                height: 100%;
+                user-select: none;
+                cursor: pointer;
+
+                .nav-btn-text{
+                    margin: auto 20px;
+                    font-size: 1.2rem;
+                    color: $font-color;
+                    font-family: Montserrat;
+                    display: flex;
+                    flex-direction: row;
+
+                    p{
+                        padding: 0 0 0 10px;
+                    }
+
+                    i{
+                        font-size: 1.1rem;
+                        padding: 2px 0 0 0;
+                    }
+                }
+                
+
+                &:hover{
+                    background-color: $header-background-light;
+                }
+            }
+        }
+    }
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    .articles-section{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding-top: $header-height;
+
+        .article-section{
+            margin: 20px;
+            padding: 20px 20px 60px 20px;
+            box-shadow: $default-box-shadow;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            .article-title{
+                font-size: 1.5rem;
+                font-family: Roboto;
+                font-weight: 100;
+            }
+
+            .article-image{
+
+            }
+
+            .article-preview-text{
+                font-family: Roboto;
+            }
+
+            .article-author{
+                position: absolute;
+                left: 20px;
+                bottom: 20px;
+                font-family: Roboto;
+
+                .article-author-name{
+
+                }
+
+                .article-author-image{
+
+                }
+            }
+
+            .article-page{
+                position: absolute;
+                right: 20px;
+                bottom: 20px;
+                font-family: Roboto;
+
+                .article-page-name{
+
+                }
+
+                .article-page-image{
+
+                }
             }
         }
     }
