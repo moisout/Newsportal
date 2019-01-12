@@ -2,7 +2,7 @@ function Newsportal() {
     this.debugUrl = '../../News-API';
     this.prodUrl = 'maurice.oeger.li/News-API';
     this.apiUrl;
-    this.articleLoader = new ArticleLoader();
+    this.articleLoader = new ArticleLoader(this);
 
     this.loadBookmarks = function () {
         var bookmarks = localStorage['bookmarks'] || false;

@@ -25,6 +25,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     box-sizing: border-box;
     box-shadow: $default-box-shadow;
     animation: drop-in $header-transition-properties;
+    z-index: 100;
 
     .title-container{
         height: 100%;
@@ -84,15 +85,15 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
                 }
 
                 &.home-btn{
-                    animation: drop-in $nav-transition-properties 1000ms forwards;
+                    animation: drop-in $nav-transition-properties 500ms forwards;
                 }
 
                 &.bookmark-btn{
-                    animation: drop-in $nav-transition-properties 1200ms forwards;
+                    animation: drop-in $nav-transition-properties 600ms forwards;
                 }
                 
                 &.search-btn{
-                    animation: drop-in $nav-transition-properties 1400ms forwards;
+                    animation: drop-in $nav-transition-properties 700ms forwards;
                 }
             }
         }
@@ -103,6 +104,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     width: 100%;
     height: 100%;
     display: flex;
+    z-index: 10;
 
     .articles-section{
         width: 100%;

@@ -1,6 +1,5 @@
 function bodyLoaded() {
     let components = [
-        'main',
         'newsportal',
         'articleLoader'
     ];
@@ -26,5 +25,12 @@ function bodyLoaded() {
         let newsportal = new Newsportal();
 
         newsportal.loadBookmarks();
+
+        $('.bookmark-btn').on('click', function () {
+            let articleLoader = new ArticleLoader(newsportal);
+            articleLoader.loadDebugArticle();
+        
+            $('.loading-container').addClass('hidden');
+        });
     }
 }

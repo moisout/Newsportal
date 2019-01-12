@@ -153,13 +153,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: #000000ee;
+  background-color: #1b1b1b;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   -webkit-animation: drop-in 600ms ease-out;
           animation: drop-in 600ms ease-out;
+  z-index: 100;
 }
 
 .header .title-container {
@@ -240,22 +241,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .header .nav .nav-btn-container .nav-btn:hover {
-  background-color: #424242d5;
+  background-color: #424242;
 }
 
 .header .nav .nav-btn-container .nav-btn.home-btn {
-  -webkit-animation: drop-in 300ms ease-out 1000ms forwards;
-          animation: drop-in 300ms ease-out 1000ms forwards;
+  -webkit-animation: drop-in 300ms ease-out 500ms forwards;
+          animation: drop-in 300ms ease-out 500ms forwards;
 }
 
 .header .nav .nav-btn-container .nav-btn.bookmark-btn {
-  -webkit-animation: drop-in 300ms ease-out 1200ms forwards;
-          animation: drop-in 300ms ease-out 1200ms forwards;
+  -webkit-animation: drop-in 300ms ease-out 600ms forwards;
+          animation: drop-in 300ms ease-out 600ms forwards;
 }
 
 .header .nav .nav-btn-container .nav-btn.search-btn {
-  -webkit-animation: drop-in 300ms ease-out 1400ms forwards;
-          animation: drop-in 300ms ease-out 1400ms forwards;
+  -webkit-animation: drop-in 300ms ease-out 700ms forwards;
+          animation: drop-in 300ms ease-out 700ms forwards;
 }
 
 .main {
@@ -264,6 +265,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  z-index: 10;
 }
 
 .main .articles-section {
