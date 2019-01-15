@@ -1,6 +1,6 @@
 function Newsportal() {
     this.debugUrl = '../../News-API';
-    this.prodUrl = 'maurice.oeger.li/News-API';
+    this.prodUrl = 'https://maurice.oeger.li/News-API';
     this.apiUrl;
     this.articleLoader = new ArticleLoader(this);
 
