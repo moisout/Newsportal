@@ -2,8 +2,8 @@ function ArticleLoader(newsportal) {
     this.bookmarks;
     this.newsportal = newsportal;
 
-    this.loadArticle = function(articleTitle, articlePreviewText, articleAuthorName, articlePageName){
-        let article = `<div class="article-section">
+    this.loadArticle = function (articleTitle, articlePreviewText, articleAuthorName, articlePageName) {
+            let article = `<div class="article-section">
             <div class="article-title">
                 <h3>${articleTitle}</h3>
             </div>
@@ -28,18 +28,24 @@ function ArticleLoader(newsportal) {
             </div>
         </div>`;
 
-        $('.articles-section').append(article);
-    },
+            $('.articles-section').append(article);
+        },
 
-    this.loadDebugArticle = function(){
-        let me = this;
-        $.ajax({
-            url: `${me.newsportal.apiUrl}/getDebugArticle.php`
-        })
-            .done(function (data) {
-                me.loadArticle(data.title, data.previewtext, data.author, data.pagename);
+        this.loadDebugArticle = function () {
+            let me = this;
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                        url: `${me.newsportal.apiUrl}/getDebugArticle.php`
+                    })
+                    .done(function (data) {
+                        let articles = data.channel.item;
+                        data.channel.item.forEach((element, index) => {
+                            me.loadArticle(articles[index].title, articles[index].description, 'unknown author', data.channel.title);
+                        });
+                        resolve(data);
+                    });
             });
-    }
+        }
 }
 
 //# sourceURL=articleLoader.js

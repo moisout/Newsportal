@@ -1,7 +1,8 @@
 function bodyLoaded() {
     let components = [
         'newsportal',
-        'articleLoader'
+        'articleLoader',
+        'scrollHandler'
     ];
 
     let loadCount = 0;
@@ -21,21 +22,22 @@ function bodyLoaded() {
             });
     });
 
-    function loadContent() {
+    async function loadContent() {
         let newsportal = new Newsportal();
-
         newsportal.loadBookmarks();
 
-        $('.bookmark-btn').on('click', function () {
-            let articleLoader = new ArticleLoader(newsportal);
-            articleLoader.loadDebugArticle();
-        
-            $('.loading-container').addClass('hidden');
-        });
+        let scrollhandler = new scrollHandler();
+        scrollhandler.initHeaderScroll();
+
+        let articleLoader = new ArticleLoader(newsportal);
+        await articleLoader.loadDebugArticle();
+    
+        $('.loading-container').addClass('hidden');
 
         $('#nav-expand-icon').click(function(){
             if($(this).hasClass('open')){
                 $('.nav-btn-container').addClass('closing');
+                $('.articles-section').css('padding-top', '');
                 setTimeout(function(){
                     $('.nav-btn-container').removeClass('open');
                     $('.nav-btn-container').removeClass('closing');
@@ -43,6 +45,7 @@ function bodyLoaded() {
             }
             else{
                 $('.nav-btn-container').addClass('open');
+                $('.articles-section').css('padding-top', '120px');
             }
 
             $(this).toggleClass('open');
