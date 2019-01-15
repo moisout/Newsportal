@@ -32,5 +32,20 @@ function bodyLoaded() {
         
             $('.loading-container').addClass('hidden');
         });
+
+        $('#nav-expand-icon').click(function(){
+            if($(this).hasClass('open')){
+                $('.nav-btn-container').addClass('closing');
+                setTimeout(function(){
+                    $('.nav-btn-container').removeClass('open');
+                    $('.nav-btn-container').removeClass('closing');
+                }, 300);
+            }
+            else{
+                $('.nav-btn-container').addClass('open');
+            }
+
+            $(this).toggleClass('open');
+        });
     }
 }

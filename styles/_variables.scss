@@ -13,9 +13,8 @@ $header-height: 60px;
 $default-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
 0 10px 10px rgba(0, 0, 0, 0.22);
 
-$intro-transition-properties: 300ms ease-out;
-
+$intro-transition-properties: 300ms cubic-bezier(.44,.08,.13,1);
+$outro-transition-properties: 300ms cubic-bezier(.42,.01,.53,1.01);
 $header-transition-properties: 600ms ease-out;
 $nav-transition-properties: 300ms ease-out;
-
 $loading-transition-properties: 2s ease-in-out;

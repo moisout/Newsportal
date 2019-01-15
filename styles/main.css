@@ -12,6 +12,11 @@
   .nav .nav-btn-container {
     display: none !important;
   }
+  .nav .nav-expand-btn {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
 }
 
 @-webkit-keyframes flow-in {
@@ -37,6 +42,58 @@
     -webkit-transform: scale(1);
             transform: scale(1);
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes float-in {
+  0% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float-in {
+  0% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes float-out {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    opacity: 0;
+  }
+}
+
+@keyframes float-out {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    opacity: 0;
   }
 }
 
@@ -128,7 +185,60 @@
   }
 }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+caption {
   margin: 0;
   padding: 0;
   border: 0;
@@ -184,6 +294,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .header .nav {
   height: 100%;
   width: auto;
+  z-index: 30;
 }
 
 .header .nav .nav-btn-container {
@@ -259,6 +370,117 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
           animation: drop-in 300ms ease-out 700ms forwards;
 }
 
+@media screen and (max-width: 500px) {
+  .header .nav .nav-btn-container.open {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    background-color: #1b1b1b;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    height: 100%;
+    width: 100%;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    -webkit-animation: float-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+            animation: float-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+    z-index: 20;
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  .header .nav .nav-btn-container.open .nav-btn {
+    -webkit-animation: none;
+            animation: none;
+    -webkit-transform: none;
+            transform: none;
+  }
+  .header .nav .nav-btn-container.open .nav-btn .nav-btn-text p {
+    display: inline;
+  }
+  .header .nav .nav-btn-container.closing {
+    -webkit-animation: float-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
+            animation: float-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+  }
+}
+
+.header .nav .nav-expand-btn {
+  width: 60px;
+  height: 100%;
+  display: none;
+  margin: 0 10px 0 0;
+}
+
+.header .nav .nav-expand-btn #nav-expand-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 60%;
+  height: 60%;
+  margin: auto;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-transition: 300ms ease-out;
+  transition: 300ms ease-out;
+}
+
+.header .nav .nav-expand-btn #nav-expand-icon.open {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.header .nav .nav-expand-btn #nav-expand-icon span {
+  position: relative;
+  display: block;
+  height: 5px;
+  width: 100%;
+  background: #f0f0f0;
+  border-radius: 9px;
+  opacity: 1;
+  -webkit-transition: 300ms ease-out;
+  transition: 300ms ease-out;
+}
+
+.header .nav .nav-expand-btn #nav-expand-icon span:nth-child(2) {
+  position: absolute;
+  margin: auto;
+}
+
+.header .nav .nav-expand-btn #nav-expand-icon span:nth-child(3) {
+  position: absolute;
+  margin: auto;
+}
+
+.header .nav .nav-expand-btn #nav-expand-icon.open span:nth-child(1), .header .nav .nav-expand-btn #nav-expand-icon.open span:nth-child(4) {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.header .nav .nav-expand-btn #nav-expand-icon.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.header .nav .nav-expand-btn #nav-expand-icon.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
 .main {
   width: 100%;
   height: 100%;
@@ -296,8 +518,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
           flex-direction: column;
   position: relative;
   overflow: hidden;
-  -webkit-animation: flow-in 300ms ease-out;
-          animation: flow-in 300ms ease-out;
+  -webkit-animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+          animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
 }
 
 .main .articles-section .article-section .article-title {

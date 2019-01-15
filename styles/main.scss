@@ -3,7 +3,60 @@
 @import 'responsive';
 @import 'animations';
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+caption {
     margin: 0;
     padding: 0;
     border: 0;
@@ -12,7 +65,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     vertical-align: baseline;
 }
 
-.header{
+.header {
     position: fixed;
     top: 0;
     left: 0;
@@ -21,21 +74,21 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: $header-background-color; 
+    background-color: $header-background-color;
     box-sizing: border-box;
     box-shadow: $default-box-shadow;
     animation: drop-in $header-transition-properties;
     z-index: 100;
 
-    .title-container{
+    .title-container {
         height: 100%;
         width: 250px;
         display: flex;
 
-        .title{
+        .title {
             margin: auto;
 
-            h1.title-text{
+            h1.title-text {
                 font-size: 2rem;
                 color: $font-color;
                 font-family: $main-font-family;
@@ -43,16 +96,17 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
         }
     }
 
-    .nav{
+    .nav {
         height: 100%;
         width: auto;
+        z-index: 30;
 
-        .nav-btn-container{
+        .nav-btn-container {
             height: 100%;
             display: flex;
             flex-direction: row;
 
-            .nav-btn{
+            .nav-btn {
                 display: flex;
                 flex-direction: row;
                 height: 100%;
@@ -61,7 +115,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
                 animation-fill-mode: forwards;
                 transform: translateY(-100%);
 
-                .nav-btn-text{
+                .nav-btn-text {
                     margin: auto 20px;
                     font-size: 1.1rem;
                     color: $font-color;
@@ -69,44 +123,139 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
                     display: flex;
                     flex-direction: row;
 
-                    p{
+                    p {
                         padding: 0 0 0 10px;
                     }
 
-                    i{
+                    i {
                         font-size: 1.1rem;
                         padding: 2px 0 0 0;
                     }
                 }
-                
 
-                &:hover{
+
+                &:hover {
                     background-color: $header-background-light;
                 }
 
-                &.home-btn{
+                &.home-btn {
                     animation: drop-in $nav-transition-properties 500ms forwards;
                 }
 
-                &.bookmark-btn{
+                &.bookmark-btn {
                     animation: drop-in $nav-transition-properties 600ms forwards;
                 }
-                
-                &.search-btn{
+
+                &.search-btn {
                     animation: drop-in $nav-transition-properties 700ms forwards;
                 }
             }
+
+            @media screen and (max-width: 500px){
+                &.open {
+                    position: absolute;
+                    left: 0;
+                    top: $header-height;
+                    background-color: $header-background-color;
+                    display: flex !important;
+                    height: 100%;
+                    width: 100%;
+                    justify-content: space-evenly;
+                    box-shadow: $default-box-shadow;
+                    animation: float-in $intro-transition-properties;
+                    z-index: 20;
+                    transform-origin: right;
+
+                    .nav-btn {
+                        animation: none;
+                        transform: none;
+
+                        .nav-btn-text {
+                            p {
+                                display: inline;
+                            }
+                        }
+                    }
+                }
+
+                &.closing{
+                    animation: float-out $outro-transition-properties;
+                    animation-fill-mode: forwards;
+                }
+            }
+
+            
         }
+
+        .nav-expand-btn {
+            width: $header-height;
+            height: 100%;
+            display: none;
+            margin: 0 10px 0 0;
+
+            #nav-expand-icon {
+                display: flex;
+                width: 60%;
+                height: 60%;
+                margin: auto;
+                position: relative;
+                transform: rotate(0deg);
+                transition: .5s ease-in-out;
+                cursor: pointer;
+                flex-direction: column;
+                justify-content: space-around;
+                transition: $nav-transition-properties;
+            }
+
+            #nav-expand-icon.open {
+                transform: rotate(180deg);
+            }
+
+            #nav-expand-icon span {
+                position: relative;
+                display: block;
+                height: 5px;
+                width: 100%;
+                background: $font-color;
+                border-radius: 9px;
+                opacity: 1;
+                transition: $nav-transition-properties;
+            }
+
+            #nav-expand-icon span:nth-child(2) {
+                position: absolute;
+                margin: auto;
+            }
+
+            #nav-expand-icon span:nth-child(3) {
+                position: absolute;
+                margin: auto;
+            }
+
+            #nav-expand-icon.open span:nth-child(1), #nav-expand-icon.open span:nth-child(4){
+                transform: scale(0);
+            }
+
+            #nav-expand-icon.open span:nth-child(2) {
+                transform: rotate(45deg);
+            }
+
+            #nav-expand-icon.open span:nth-child(3) {
+                transform: rotate(-45deg);
+            }
+        }
+
+
     }
 }
 
-.main{
+.main {
     width: 100%;
     height: 100%;
     display: flex;
     z-index: 10;
 
-    .articles-section{
+    .articles-section {
         width: 100%;
         height: 100%;
         display: flex;
@@ -114,7 +263,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
         margin: auto;
         padding-top: $header-height;
 
-        .article-section{
+        .article-section {
             margin: 20px;
             padding: 20px 20px 60px 20px;
             box-shadow: $default-box-shadow;
@@ -124,55 +273,45 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
             overflow: hidden;
             animation: flow-in $intro-transition-properties;
 
-            .article-title{
+            .article-title {
                 font-size: 1.5rem;
                 font-family: Roboto;
                 font-weight: 100;
             }
 
-            .article-image{
+            .article-image {}
 
-            }
-
-            .article-preview-text{
+            .article-preview-text {
                 font-family: Roboto;
                 margin: 10px 0;
             }
 
-            .article-author{
+            .article-author {
                 position: absolute;
                 left: 20px;
                 bottom: 20px;
                 font-family: Roboto;
 
-                .article-author-name{
+                .article-author-name {}
 
-                }
-
-                .article-author-image{
-
-                }
+                .article-author-image {}
             }
 
-            .article-page{
+            .article-page {
                 position: absolute;
                 right: 20px;
                 bottom: 20px;
                 font-family: Roboto;
 
-                .article-page-name{
+                .article-page-name {}
 
-                }
-
-                .article-page-image{
-
-                }
+                .article-page-image {}
             }
         }
     }
 }
 
-.loading-container{
+.loading-container {
     width: 200px;
     height: 200px;
     position: absolute;
@@ -190,17 +329,17 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     text-align: center;
     transition: transform $header-transition-properties;
 
-    .loading-message{
+    .loading-message {
         font-family: $main-font-family;
         font-size: 1.1rem;
     }
 
-    .loading-animation-container{
+    .loading-animation-container {
         width: 100%;
         height: 20px;
         display: flex;
 
-        .loading-animation{
+        .loading-animation {
             margin: auto 0;
             width: 50px;
             height: 100%;
@@ -209,7 +348,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
         }
     }
 
-    &.hidden{
+    &.hidden {
         transform: scale(0);
     }
 }
