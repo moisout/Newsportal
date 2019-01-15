@@ -2,68 +2,7 @@
 @import 'variables';
 @import 'responsive';
 @import 'animations';
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-font,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-caption {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-}
+@import 'extras';
 
 .header {
     position: fixed;
@@ -79,6 +18,7 @@ caption {
     box-shadow: $default-box-shadow;
     animation: drop-in $header-transition-properties;
     z-index: 100;
+    transition: top $intro-transition-properties;
 
     .title-container {
         height: 100%;
@@ -112,8 +52,9 @@ caption {
                 height: 100%;
                 user-select: none;
                 cursor: pointer;
-                animation-fill-mode: forwards;
                 transform: translateY(-100%);
+                animation: drop-in $nav-transition-properties;
+                animation-fill-mode: forwards;
 
                 .nav-btn-text {
                     margin: auto 20px;
@@ -136,18 +77,6 @@ caption {
 
                 &:hover {
                     background-color: $header-background-light;
-                }
-
-                &.home-btn {
-                    animation: drop-in $nav-transition-properties 500ms forwards;
-                }
-
-                &.bookmark-btn {
-                    animation: drop-in $nav-transition-properties 600ms forwards;
-                }
-
-                &.search-btn {
-                    animation: drop-in $nav-transition-properties 700ms forwards;
                 }
             }
 
@@ -244,8 +173,14 @@ caption {
                 transform: rotate(-45deg);
             }
         }
+    }
 
+    &.nav-up{
+        top: calc(-#{$header-height} * 2 - 30px);
+    }
 
+    &.nav-down{
+        top: 0;
     }
 }
 
@@ -262,6 +197,7 @@ caption {
         flex-direction: column;
         margin: auto;
         padding-top: $header-height;
+        transition: padding $nav-transition-properties;
 
         .article-section {
             margin: 20px;

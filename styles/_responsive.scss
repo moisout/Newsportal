@@ -25,8 +25,17 @@
         .nav-btn-container {
             display: none !important;
         }
-        .nav-expand-btn{
+
+        .nav-expand-btn {
             display: flex !important;
+        }
+    }
+}
+
+@media screen and (min-width: 500px){
+    .main {
+        .articles-section {
+            padding-top: $header-height !important;
         }
     }
 }

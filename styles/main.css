@@ -19,6 +19,12 @@
   }
 }
 
+@media screen and (min-width: 500px) {
+  .main .articles-section {
+    padding-top: 60px !important;
+  }
+}
+
 @-webkit-keyframes flow-in {
   0% {
     -webkit-transform: scale(0.9, 0.8);
@@ -271,6 +277,8 @@ caption {
   -webkit-animation: drop-in 600ms ease-out;
           animation: drop-in 600ms ease-out;
   z-index: 100;
+  -webkit-transition: top 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+  transition: top 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
 }
 
 .header .title-container {
@@ -322,10 +330,12 @@ caption {
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
+  -webkit-animation: drop-in 300ms ease-out;
+          animation: drop-in 300ms ease-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .header .nav .nav-btn-container .nav-btn .nav-btn-text {
@@ -353,21 +363,6 @@ caption {
 
 .header .nav .nav-btn-container .nav-btn:hover {
   background-color: #424242;
-}
-
-.header .nav .nav-btn-container .nav-btn.home-btn {
-  -webkit-animation: drop-in 300ms ease-out 500ms forwards;
-          animation: drop-in 300ms ease-out 500ms forwards;
-}
-
-.header .nav .nav-btn-container .nav-btn.bookmark-btn {
-  -webkit-animation: drop-in 300ms ease-out 600ms forwards;
-          animation: drop-in 300ms ease-out 600ms forwards;
-}
-
-.header .nav .nav-btn-container .nav-btn.search-btn {
-  -webkit-animation: drop-in 300ms ease-out 700ms forwards;
-          animation: drop-in 300ms ease-out 700ms forwards;
 }
 
 @media screen and (max-width: 500px) {
@@ -481,6 +476,14 @@ caption {
           transform: rotate(-45deg);
 }
 
+.header.nav-up {
+  top: calc(-60px * 2 - 30px);
+}
+
+.header.nav-down {
+  top: 0;
+}
+
 .main {
   width: 100%;
   height: 100%;
@@ -502,6 +505,8 @@ caption {
           flex-direction: column;
   margin: auto;
   padding-top: 60px;
+  -webkit-transition: padding 300ms ease-out;
+  transition: padding 300ms ease-out;
 }
 
 .main .articles-section .article-section {
