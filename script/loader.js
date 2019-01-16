@@ -25,6 +25,7 @@ function bodyLoaded() {
     async function loadContent() {
         let newsportal = new Newsportal();
         newsportal.loadBookmarks();
+        newsportal.initHeader();
 
         let scrollhandler = new scrollHandler();
         scrollhandler.initHeaderScroll();
@@ -33,22 +34,5 @@ function bodyLoaded() {
         await articleLoader.loadDebugArticle();
     
         $('.loading-container').addClass('hidden');
-
-        $('#nav-expand-icon').click(function(){
-            if($(this).hasClass('open')){
-                $('.nav-btn-container').addClass('closing');
-                $('.articles-section').css('padding-top', '');
-                setTimeout(function(){
-                    $('.nav-btn-container').removeClass('open');
-                    $('.nav-btn-container').removeClass('closing');
-                }, 300);
-            }
-            else{
-                $('.nav-btn-container').addClass('open');
-                $('.articles-section').css('padding-top', '120px');
-            }
-
-            $(this).toggleClass('open');
-        });
     }
 }
