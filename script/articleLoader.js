@@ -37,7 +37,7 @@ function ArticleLoader(newsportal) {
                     .done(function (data) {
                         let articles = data.channel.item;
                         data.channel.item.forEach((element, index) => {
-                            me.loadArticle(articles[index].title, articles[index].description, data.channel.title, articles[index].link, art);
+                            me.loadArticle(articles[index].title, articles[index].description, data.channel.title, articles[index].link, articles[index].link);
                         });
                         resolve(data);
                     });
