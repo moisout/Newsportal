@@ -51,6 +51,15 @@
             display: flex !important;
         }
     }
+
+    .settings-cover {
+    
+        .settings-container {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 0 !important;
+        }
+    }
 }
 
 @media screen and (min-width: 500px) {

@@ -213,7 +213,6 @@
             position: relative;
             overflow: hidden;
             animation: flow-in $intro-transition-properties;
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
             a {
                 text-decoration: none;
@@ -253,11 +252,6 @@
                 bottom: 20px;
                 font-family: Roboto;
             }
-
-            &:hover{
-                box-shadow: $default-box-shadow;
-            }
-
         }
     }
 }
@@ -304,7 +298,7 @@
                 width: 50px;
                 height: 100%;
                 animation: loading-animation $loading-transition-properties infinite;
-                background-color: #004343;
+                background-color: $accent-color;
             }
         }
 
@@ -312,5 +306,64 @@
             animation: flow-out $outro-transition-properties;
             animation-fill-mode: forwards;
         }
+    }
+}
+
+.settings-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+    z-index: 200;
+    display: none;
+
+    .settings-container {
+        margin: auto;
+        background-color: $background-color;
+        width: 400px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: $default-box-shadow;
+        border-radius: 2px;
+        position: relative;
+        animation: flow-in $intro-transition-properties;
+
+        .settings-title{
+            font-family: $main-font-family;
+            text-align: center;
+            margin: 20px 0 0 0;
+            display: flex;
+
+            h2{
+                margin: auto;
+                font-size: 1.2rem;
+            }
+        }
+
+        .settings-close-button{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 20px 30px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        &.closing{
+            animation: flow-out $outro-transition-properties;
+        }
+    }
+
+    &.opened{
+        display: flex;
+        animation: background-fade-in $intro-transition-properties;
+    }
+
+    &.closing{
+        animation: background-fade-out $outro-transition-properties;
     }
 }

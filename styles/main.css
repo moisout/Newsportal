@@ -39,6 +39,11 @@
     display: -ms-flexbox !important;
     display: flex !important;
   }
+  .settings-cover .settings-container {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+  }
 }
 
 @media screen and (min-width: 500px) {
@@ -236,6 +241,70 @@
     -webkit-transform: translateX(0) scale(1, 1);
             transform: translateX(0) scale(1, 1);
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes background-fade-in {
+  0% {
+    opacity: 0;
+    display: -webkit-box;
+    display: flex;
+  }
+  100% {
+    opacity: 1;
+    display: -webkit-box;
+    display: flex;
+  }
+}
+
+@keyframes background-fade-in {
+  0% {
+    opacity: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  100% {
+    opacity: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@-webkit-keyframes background-fade-out {
+  0% {
+    opacity: 1;
+    display: -webkit-box;
+    display: flex;
+  }
+  99% {
+    opacity: 0;
+    display: -webkit-box;
+    display: flex;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes background-fade-out {
+  0% {
+    opacity: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  99% {
+    opacity: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  100% {
+    opacity: 0;
+    display: none;
   }
 }
 
@@ -581,8 +650,6 @@ caption {
   overflow: hidden;
   -webkit-animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
           animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
-  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .main .articles-section .article-section a {
@@ -632,11 +699,6 @@ caption {
   right: 20px;
   bottom: 20px;
   font-family: Roboto;
-}
-
-.main .articles-section .article-section:hover {
-  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .loading-cover {
@@ -706,5 +768,78 @@ caption {
           animation: flow-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
+}
+
+.settings-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+  z-index: 200;
+  display: none;
+}
+
+.settings-cover .settings-container {
+  margin: auto;
+  background-color: #fff;
+  width: 400px;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 20px;
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 2px;
+  position: relative;
+  -webkit-animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+          animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+}
+
+.settings-cover .settings-container .settings-title {
+  font-family: Montserrat, "Open Sans", sans-serif;
+  text-align: center;
+  margin: 20px 0 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.settings-cover .settings-container .settings-title h2 {
+  margin: auto;
+  font-size: 1.2rem;
+}
+
+.settings-cover .settings-container .settings-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 20px 30px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.settings-cover .settings-container.closing {
+  -webkit-animation: flow-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
+          animation: flow-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
+}
+
+.settings-cover.opened {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation: background-fade-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+          animation: background-fade-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+}
+
+.settings-cover.closing {
+  -webkit-animation: background-fade-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
+          animation: background-fade-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
 }
 /*# sourceMappingURL=main.css.map */

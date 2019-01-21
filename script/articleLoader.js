@@ -1,14 +1,13 @@
 function ArticleLoader(newsportal) {
-    this.bookmarks;
     this.newsportal = newsportal;
 
     this.loadArticle = function (articleTitle, articlePreviewText, articlePageName, articleLink, articleImage, articleDate) {
-        let image = '';
-        if(articleImage!=''){
-            image = `<div class="article-image">
+            let image = '';
+            if (articleImage != '') {
+                image = `<div class="article-image">
                         <img src="${articleImage}"></img>
                     </div>`
-        }
+            }
             let article = `<div class="article-section">
             <a href="${articleLink}" target="_blank" class="no-format">
                 <div class="article-container">
@@ -43,13 +42,12 @@ function ArticleLoader(newsportal) {
                 $.ajax({
                         url: `${me.newsportal.apiUrl}/getNewArticles.php`,
                         data: {
-                            "urls": [
-                                "http://www.nzz.ch/recent.rss",
-                                "https://rss.golem.de/rss.php?feed=RSS2.0",
-                                "https://www.blick.ch/news/rss.xml"
+                            "sources": [
+                                "NZZ",
+                                "Golem.de",
+                                "Blick"
                             ]
                         }
-                        // data: {"url": "https://rss.golem.de/rss.php?feed=RSS2.0"}
                     })
                     .done(function (data) {
                         let articles = [];

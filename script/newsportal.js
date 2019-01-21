@@ -3,17 +3,6 @@ function Newsportal() {
     this.prodUrl = 'https://maurice.oeger.li/News-API';
     this.apiUrl;
     this.articleLoader = new ArticleLoader(this);
-
-    this.loadBookmarks = function () {
-        var bookmarks = localStorage['bookmarks'] || false;
-
-        if (bookmarks === false) {
-            console.log('no bookmarks');
-        }
-        else{
-            console.log(bookmarks);
-        }
-    }
     
     this.initHeader = function(){
         $('#nav-expand-icon').click(function(){
@@ -32,6 +21,8 @@ function Newsportal() {
 
             $(this).toggleClass('open');
         });
+
+        $
     }
 
     let debug = location.href.includes('localhost');

@@ -1,21 +1,22 @@
 {
-    "short_name": "Newsportal",
-    "name": "Newsportal",
-    "icons": [
-      {
-        "src": "/img/icon192x.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "/img/icon512x.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ],
-    "start_url": "index.html",
-    "display": "standalone",
-    "orientation": "portrait",
-    "theme_color": "#181818"
-  }
-  
+  "name": "Newsportal",
+  "short_name": "Newsportal",
+  "start_url": "https://maurice.oeger.li/Newsportal",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#181818",
+  "background_color": "#181818",
+  "icons": [{
+      "src": "/img/icon192mobile.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "density": 1.0
+    },
+    {
+      "src": "/img/icon512mobile.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "density": 4.0
+    }
+  ]
+}

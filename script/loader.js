@@ -2,7 +2,8 @@ function bodyLoaded() {
     let components = [
         'newsportal',
         'articleLoader',
-        'scrollHandler'
+        'scrollHandler',
+        'settings'
     ];
 
     let loadCount = 0;
@@ -24,8 +25,10 @@ function bodyLoaded() {
 
     async function loadContent() {
         let newsportal = new Newsportal();
-        newsportal.loadBookmarks();
         newsportal.initHeader();
+
+        let settingsHander = new SettingsHandler();
+        settingsHander.loadSettings();
 
         let scrollhandler = new scrollHandler();
         scrollhandler.initHeaderScroll();
