@@ -2,22 +2,29 @@ function ArticleLoader(newsportal) {
     this.bookmarks;
     this.newsportal = newsportal;
 
-    this.loadArticle = function (articleTitle, articlePreviewText, articlePageName, articleLink, articleImage) {
+    this.loadArticle = function (articleTitle, articlePreviewText, articlePageName, articleLink, articleImage, articleDate) {
             let article = `<div class="article-section">
-            <div class="article-title">
-                <a href="${articleLink}" target="_blank" class="no-format"><h3>${articleTitle}</h3></a>
-            </div>
-            <div class="article-image">
-                <img src="${articleImage}"></img>
-            </div>
-            <div class="article-preview-text">
-                <p>
-                    ${articlePreviewText}
-                </p>
-            </div>
+            <a href="${articleLink}" target="_blank" class="no-format">
+                <div class="article-container">
+                    <div class="article-title">
+                        <h3>${articleTitle}</h3>
+                    </div>
+                    <div class="article-content-container">
+                        <div class="article-image">
+                            <img src="${articleImage}"></img>
+                        </div>
+                        <div class="article-preview-text">
+                            <p>
+                                ${articlePreviewText}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
             <div class="article-page">
                 <div class="article-page-name">
                     <p>${articlePageName}</p>
+                    <p>${articleDate}</p>
                 </div>
                 <div class="article-page-image">
                 </div>
@@ -32,13 +39,44 @@ function ArticleLoader(newsportal) {
             return new Promise(function (resolve, reject) {
                 $.ajax({
                         url: `${me.newsportal.apiUrl}/getNewArticles.php`,
-                        data: {"url": "http://www.nzz.ch/recent.rss"}
+                        data: {
+                            "urls": [
+                                "http://www.nzz.ch/recent.rss",
+                                "https://rss.golem.de/rss.php?feed=RSS2.0",
+                                "https://www.blick.ch/news/rss.xml"
+                            ]
+                        }
+                        // data: {"url": "https://rss.golem.de/rss.php?feed=RSS2.0"}
                     })
                     .done(function (data) {
-                        let articles = data.channel.item;
-                        data.channel.item.forEach((element, index) => {
-                            me.loadArticle(articles[index].title, articles[index].description, data.channel.title, articles[index].link, articles[index].link);
+                        let articles = [];
+                        data.forEach(element => {
+                            element.channel.item.forEach(item =>{
+                                item['name'] = element.channel.title;
+                                articles.push(item);
+                            });
+                            
                         });
+                        
+                        articles.sort(function compare(a, b){
+                            let dateA = new Date(a.pubDate);
+                            let dateB = new Date(b.pubDate);
+                            return dateB - dateA;
+                        });
+
+                        articles.forEach((element, index) => {
+                                let title = element.title;
+                                let description = element.description;
+                                let name = element.name;
+                                let link = element.link;
+                                let thumbnail = '';
+                                let date = element.pubDate;
+                                if (typeof articles[index].thumbnail != 'undefined') {
+                                    thumbnail = articles[index].thumbnail['@attributes'].url;
+                                };
+                                me.loadArticle(title, description, name, link, thumbnail, date);
+                        });
+
                         resolve(data);
                     });
             });
