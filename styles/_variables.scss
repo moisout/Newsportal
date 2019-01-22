@@ -1,20 +1,10 @@
-$main-color: #181818;
-$accent-color: #004343;
-$font-color: #f0f0f0;
-$header-background-color: #1b1b1b;
-$header-background-light: #424242;
-
-$background-color: #fff;
-
 $main-font-family: Montserrat,
 'Open Sans',
 sans-serif;
 
+$second-font-family: 'Roboto', 'Open Sans', sans-serif;
+
 $header-height: 60px;
-
-$default-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-
-$article-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
 $intro-transition-properties: 300ms cubic-bezier(.44,.08,.13,1);
 $outro-transition-properties: 300ms cubic-bezier(.42,.01,.53,1.01);

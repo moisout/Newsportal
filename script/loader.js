@@ -24,11 +24,12 @@ function bodyLoaded() {
     });
 
     async function loadContent() {
+        let settingsHander = new SettingsHandler();
+        settingsHander.initSettings();
+        settingsHander.loadSettings();
+
         let newsportal = new Newsportal();
         newsportal.initHeader();
-
-        let settingsHander = new SettingsHandler();
-        settingsHander.loadSettings();
 
         let scrollhandler = new scrollHandler();
         scrollhandler.initHeaderScroll();

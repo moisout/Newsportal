@@ -45,7 +45,8 @@ function ArticleLoader(newsportal) {
                             "sources": [
                                 "NZZ",
                                 "Golem.de",
-                                "Blick"
+                                "Blick",
+                                "Lineageos"
                             ]
                         }
                     })

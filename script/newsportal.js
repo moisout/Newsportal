@@ -21,8 +21,6 @@ function Newsportal() {
 
             $(this).toggleClass('open');
         });
-
-        $
     }
 
     let debug = location.href.includes('localhost');
