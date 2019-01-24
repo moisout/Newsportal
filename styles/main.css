@@ -379,6 +379,10 @@ html.light-theme caption {
   vertical-align: baseline;
 }
 
+html.light-theme html, html.light-theme body {
+  background-color: #e7e7e7;
+}
+
 html.light-theme .header {
   position: fixed;
   top: 0;
@@ -618,6 +622,7 @@ html.light-theme .main {
   display: -ms-flexbox;
   display: flex;
   z-index: 10;
+  background-color: #e7e7e7;
 }
 
 html.light-theme .main .articles-section {
@@ -659,6 +664,7 @@ html.light-theme .main .articles-section .article-section {
   overflow: hidden;
   -webkit-animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
           animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+  background-color: #fff;
 }
 
 html.light-theme .main .articles-section .article-section a {
@@ -1159,6 +1165,10 @@ html.dark-theme caption {
   vertical-align: baseline;
 }
 
+html.dark-theme html, html.dark-theme body {
+  background-color: #181e23;
+}
+
 html.dark-theme .header {
   position: fixed;
   top: 0;
@@ -1398,6 +1408,7 @@ html.dark-theme .main {
   display: -ms-flexbox;
   display: flex;
   z-index: 10;
+  background-color: #181e23;
 }
 
 html.dark-theme .main .articles-section {
@@ -1439,6 +1450,7 @@ html.dark-theme .main .articles-section .article-section {
   overflow: hidden;
   -webkit-animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
           animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
+  background-color: #1e2931;
 }
 
 html.dark-theme .main .articles-section .article-section a {
@@ -1572,7 +1584,7 @@ html.dark-theme .settings-cover {
 
 html.dark-theme .settings-cover .settings-container {
   margin: auto;
-  background-color: #1e1e1e;
+  background-color: #1e2931;
   width: 400px;
   height: 400px;
   display: -webkit-box;
@@ -1675,7 +1687,7 @@ html.dark-theme .toggle-btn .toggle-btn-knob {
   top: 0;
   width: 20px;
   height: 20px;
-  background-color: #f0f0f0;
+  background-color: #181818;
   border-radius: 100%;
   -webkit-transition: all 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
   transition: all 300ms cubic-bezier(0.44, 0.08, 0.13, 1);

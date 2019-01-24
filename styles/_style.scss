@@ -4,6 +4,10 @@
 @import 'animations';
 @import 'extras';
 
+html, body{
+    background-color: $background-color-dark;
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -190,6 +194,7 @@
     height: 100%;
     display: flex;
     z-index: 10;
+    background-color: $background-color-dark;
 
     .articles-section {
         width: 100%;
@@ -213,11 +218,12 @@
             position: relative;
             overflow: hidden;
             animation: flow-in $intro-transition-properties;
+            background-color: $background-color;
 
             a {
                 text-decoration: none;
                 color: $main-color;
-            }
+            } 
 
             .article-container {
                 display: flex;
@@ -410,7 +416,7 @@
         top: 0;
         width: 20px;
         height: 20px;
-        background-color: $main-color;
+        background-color: $main-btn-color;
         border-radius: 100%;
         transition: all $intro-transition-properties;
     }
