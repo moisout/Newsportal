@@ -21,7 +21,7 @@ function SettingsHandler() {
     };
 
     this.loadSettings = function () {
-        console.log(localStorage['settings']);
+        let me = this;
         let rawSettings = localStorage['settings'] || false;
         let settings = JSON.parse(rawSettings);
 
@@ -34,11 +34,20 @@ function SettingsHandler() {
         }
 
         $('html').addClass(this.settings.theme);
-        $(`.${this.settings.theme}-btn`).addClass('on');
+        $(`input[value=${this.settings.theme}]`).prop('checked', true);
+
+        $('input[name=theme]').on('change', function(){
+            let theme = $('input[name=theme]:checked').val();
+            me.settings.theme = theme;
+            me.syncSettings();
+        });
     }
 
     this.syncSettings = function(){
         localStorage['settings'] = JSON.stringify(this.settings);
+
+        $('html').removeClass();
+        $('html').addClass(this.settings.theme);
     }
 
     this.initSettings = function(){
@@ -48,7 +57,7 @@ function SettingsHandler() {
         });
 
         $('.settings-close-button').on('click', hideSettings);
-        $('.settings-cover').on('click', hideSettings).children().click(function (e) {
+        $('.settings-cover').on('mousedown', hideSettings).children().mousedown(function (e) {
             return false;
         });
 
@@ -61,31 +70,5 @@ function SettingsHandler() {
                 $('.settings-container').removeClass('closing');
             }, 300);
         }
-
-        // $('.toggle-btn').on('click', function(){
-        //     $(this).toggleClass('on');
-        // });
-
-        $('.light-theme-btn').on('click', function(){
-            if(me.settings.theme !== 'light-theme'){
-                me.settings.theme = 'light-theme';
-                $('html').addClass('light-theme');
-                $('html').removeClass('dark-theme');
-                $(this).addClass('on');
-                $('.dark-theme-btn').removeClass('on');
-                me.syncSettings();
-            }
-        });
-
-        $('.dark-theme-btn').on('click', function(){
-            if(me.settings.theme !== 'dark-theme'){
-                me.settings.theme = 'dark-theme';
-                $('html').addClass('dark-theme');
-                $('html').removeClass('light-theme');
-                $(this).addClass('on');
-                $('.light-theme-btn').removeClass('on');
-                me.syncSettings();
-            }
-        });
     }
 }

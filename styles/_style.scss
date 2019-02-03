@@ -3,6 +3,7 @@
 @import 'responsive';
 @import 'animations';
 @import 'extras';
+@import 'components';
 
 .header {
     position: fixed;
@@ -381,49 +382,11 @@
     &.opened {
         display: flex;
         animation: background-fade-in $intro-transition-properties;
+        animation-fill-mode: forwards;
     }
 
     &.closing {
         animation: background-fade-out $outro-transition-properties;
-    }
-}
-
-.toggle-btn {
-    width: 40px;
-    height: 20px;
-    display: flex;
-    position: relative;
-    cursor: pointer;
-
-    .toggle-btn-base {
-        width: 25px;
-        height: 12px;
-        margin: auto;
-        background-color: #585858;
-        border-radius: 30px;
-        transition: background-color $intro-transition-properties;
-    }
-
-    .toggle-btn-knob {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 20px;
-        height: 20px;
-        background-color: $main-color;
-        border-radius: 100%;
-        transition: all $intro-transition-properties;
-    }
-
-    &.on {
-        .toggle-btn-knob {
-            left: calc(100% - 20px);
-            background-color: $accent-color-light;
-        }
-
-        .toggle-btn-base {
-            background-color: $accent-color-dark;
-        }
-
+        animation-fill-mode: forwards;
     }
 }
