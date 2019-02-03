@@ -5,6 +5,11 @@
 @import 'extras';
 @import 'components';
 
+html,
+body {
+    background-color: $background-color-dark;
+}
+
 .header {
     position: fixed;
     top: 0;
@@ -191,6 +196,7 @@
     height: 100%;
     display: flex;
     z-index: 10;
+    background-color: $background-color-dark;
 
     .articles-section {
         width: 100%;
@@ -214,6 +220,7 @@
             position: relative;
             overflow: hidden;
             animation: flow-in $intro-transition-properties;
+            background-color: $background-color;
 
             a {
                 text-decoration: none;
@@ -358,21 +365,21 @@
             animation: flow-out $outro-transition-properties;
         }
 
-        .settings-content{
-            .settings-section{
+        .settings-content {
+            .settings-section {
 
-                h3{
+                h3 {
                     font-family: $second-font-family;
                     margin: 20px 0;
                 }
 
-                &.theme{
-                    .settings-theme{
+                &.theme {
+                    .settings-theme {
                         display: flex;
                         flex-direction: row;
                         margin: 10px 0;
                         font-family: $second-font-family;
-                        
+
                     }
                 }
             }
