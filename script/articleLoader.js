@@ -45,12 +45,12 @@ function ArticleLoader(newsportal) {
                             "sources": [
                                 "NZZ",
                                 "Golem.de",
-                                "Blick",
                                 "Lineageos"
                             ]
                         }
                     })
                     .done(function (data) {
+                        console.log(data);
                         let articles = [];
                         data.forEach(element => {
                             element.channel.item.forEach(item => {

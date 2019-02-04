@@ -726,7 +726,7 @@ html.light-theme .main .articles-section .article-section {
 
 html.light-theme .main .articles-section .article-section a {
   text-decoration: none;
-  color: #181818;
+  color: #2c2c2c;
 }
 
 html.light-theme .main .articles-section .article-section .article-container {
@@ -743,6 +743,7 @@ html.light-theme .main .articles-section .article-section .article-container .ar
   font-size: 1.5rem;
   font-family: "Roboto", "Open Sans", sans-serif;
   font-weight: 100;
+  color: #181818;
 }
 
 html.light-theme .main .articles-section .article-section .article-container .article-content-container {
@@ -771,6 +772,7 @@ html.light-theme .main .articles-section .article-section .article-page {
   right: 20px;
   bottom: 20px;
   font-family: "Roboto", "Open Sans", sans-serif;
+  color: #181818;
 }
 
 html.light-theme .loading-cover {
@@ -816,6 +818,7 @@ html.light-theme .loading-cover .loading-container {
 html.light-theme .loading-cover .loading-container .loading-message {
   font-family: Montserrat, "Open Sans", sans-serif;
   font-size: 1.1rem;
+  color: #181818;
 }
 
 html.light-theme .loading-cover .loading-container .loading-animation-container {
@@ -886,6 +889,7 @@ html.light-theme .settings-cover .settings-container .settings-title {
 html.light-theme .settings-cover .settings-container .settings-title h2 {
   margin: auto;
   font-size: 1.2rem;
+  color: #181818;
 }
 
 html.light-theme .settings-cover .settings-container .settings-close-button {
@@ -902,9 +906,14 @@ html.light-theme .settings-cover .settings-container.closing {
           animation: flow-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
 }
 
+html.light-theme .settings-cover .settings-container .settings-content .settings-section {
+  color: #181818;
+}
+
 html.light-theme .settings-cover .settings-container .settings-content .settings-section h3 {
   font-family: "Roboto", "Open Sans", sans-serif;
   margin: 20px 0;
+  color: #181818;
 }
 
 html.light-theme .settings-cover .settings-container .settings-content .settings-section.theme .settings-theme {
@@ -1243,7 +1252,7 @@ html.dark-theme .radio-btn .radio-btn-base .radio-btn-dot {
 
 html.dark-theme html,
 html.dark-theme body {
-  background-color: #181e23;
+  background-color: #1e1e1e;
 }
 
 html.dark-theme .header {
@@ -1485,7 +1494,7 @@ html.dark-theme .main {
   display: -ms-flexbox;
   display: flex;
   z-index: 10;
-  background-color: #181e23;
+  background-color: #1e1e1e;
 }
 
 html.dark-theme .main .articles-section {
@@ -1527,12 +1536,12 @@ html.dark-theme .main .articles-section .article-section {
   overflow: hidden;
   -webkit-animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
           animation: flow-in 300ms cubic-bezier(0.44, 0.08, 0.13, 1);
-  background-color: #1e2931;
+  background-color: #303030;
 }
 
 html.dark-theme .main .articles-section .article-section a {
   text-decoration: none;
-  color: #f0f0f0;
+  color: #e9e9e9;
 }
 
 html.dark-theme .main .articles-section .article-section .article-container {
@@ -1549,6 +1558,7 @@ html.dark-theme .main .articles-section .article-section .article-container .art
   font-size: 1.5rem;
   font-family: "Roboto", "Open Sans", sans-serif;
   font-weight: 100;
+  color: #f0f0f0;
 }
 
 html.dark-theme .main .articles-section .article-section .article-container .article-content-container {
@@ -1577,6 +1587,7 @@ html.dark-theme .main .articles-section .article-section .article-page {
   right: 20px;
   bottom: 20px;
   font-family: "Roboto", "Open Sans", sans-serif;
+  color: #f0f0f0;
 }
 
 html.dark-theme .loading-cover {
@@ -1622,6 +1633,7 @@ html.dark-theme .loading-cover .loading-container {
 html.dark-theme .loading-cover .loading-container .loading-message {
   font-family: Montserrat, "Open Sans", sans-serif;
   font-size: 1.1rem;
+  color: #f0f0f0;
 }
 
 html.dark-theme .loading-cover .loading-container .loading-animation-container {
@@ -1661,7 +1673,7 @@ html.dark-theme .settings-cover {
 
 html.dark-theme .settings-cover .settings-container {
   margin: auto;
-  background-color: #1e2931;
+  background-color: #303030;
   width: 400px;
   height: 400px;
   display: -webkit-box;
@@ -1692,6 +1704,7 @@ html.dark-theme .settings-cover .settings-container .settings-title {
 html.dark-theme .settings-cover .settings-container .settings-title h2 {
   margin: auto;
   font-size: 1.2rem;
+  color: #f0f0f0;
 }
 
 html.dark-theme .settings-cover .settings-container .settings-close-button {
@@ -1708,9 +1721,14 @@ html.dark-theme .settings-cover .settings-container.closing {
           animation: flow-out 300ms cubic-bezier(0.42, 0.01, 0.53, 1.01);
 }
 
+html.dark-theme .settings-cover .settings-container .settings-content .settings-section {
+  color: #f0f0f0;
+}
+
 html.dark-theme .settings-cover .settings-container .settings-content .settings-section h3 {
   font-family: "Roboto", "Open Sans", sans-serif;
   margin: 20px 0;
+  color: #f0f0f0;
 }
 
 html.dark-theme .settings-cover .settings-container .settings-content .settings-section.theme .settings-theme {

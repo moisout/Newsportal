@@ -36,7 +36,7 @@ body {
 
             h1.title-text {
                 font-size: 2rem;
-                color: $font-color;
+                color: $header-font-color;
                 font-family: $main-font-family;
             }
         }
@@ -65,7 +65,7 @@ body {
                 .nav-btn-text {
                     margin: auto 20px;
                     font-size: 1.1rem;
-                    color: $font-color;
+                    color: $header-font-color;
                     font-family: $main-font-family;
                     display: flex;
                     flex-direction: row;
@@ -151,7 +151,7 @@ body {
                 display: block;
                 height: 5px;
                 width: 100%;
-                background: $font-color;
+                background: $header-font-color;
                 border-radius: 9px;
                 opacity: 1;
                 transition: $nav-transition-properties;
@@ -224,7 +224,7 @@ body {
 
             a {
                 text-decoration: none;
-                color: $main-color;
+                color: $font-color-shaded;
             }
 
             .article-container {
@@ -235,6 +235,7 @@ body {
                     font-size: 1.5rem;
                     font-family: $second-font-family;
                     font-weight: 100;
+                    color: $font-color;
                 }
 
                 .article-content-container {
@@ -259,6 +260,7 @@ body {
                 right: 20px;
                 bottom: 20px;
                 font-family: $second-font-family;
+                color: $font-color;
             }
         }
     }
@@ -294,6 +296,7 @@ body {
         .loading-message {
             font-family: $main-font-family;
             font-size: 1.1rem;
+            color: $font-color;
         }
 
         .loading-animation-container {
@@ -349,6 +352,7 @@ body {
             h2 {
                 margin: auto;
                 font-size: 1.2rem;
+                color: $font-color;
             }
         }
 
@@ -367,10 +371,12 @@ body {
 
         .settings-content {
             .settings-section {
+                color: $font-color;
 
                 h3 {
                     font-family: $second-font-family;
                     margin: 20px 0;
+                    color: $font-color;
                 }
 
                 &.theme {
@@ -379,7 +385,6 @@ body {
                         flex-direction: row;
                         margin: 10px 0;
                         font-family: $second-font-family;
-
                     }
                 }
             }
