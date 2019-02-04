@@ -899,6 +899,7 @@ html.light-theme .settings-cover .settings-container .settings-close-button {
   padding: 20px 30px;
   font-size: 2rem;
   cursor: pointer;
+  color: #181818;
 }
 
 html.light-theme .settings-cover .settings-container.closing {
@@ -1714,6 +1715,7 @@ html.dark-theme .settings-cover .settings-container .settings-close-button {
   padding: 20px 30px;
   font-size: 2rem;
   cursor: pointer;
+  color: #f0f0f0;
 }
 
 html.dark-theme .settings-cover .settings-container.closing {
