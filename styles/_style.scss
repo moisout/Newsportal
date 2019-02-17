@@ -8,6 +8,8 @@
 html,
 body {
     background-color: $background-color-dark;
+    width: 100%;
+    height: 100%;
 }
 
 .header {
@@ -17,7 +19,7 @@ body {
     width: 100%;
     height: $header-height;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     background-color: $header-background-color;
     box-sizing: border-box;
@@ -26,161 +28,172 @@ body {
     z-index: 100;
     transition: top $intro-transition-properties;
 
-    .title-container {
-        height: 100%;
-        width: 250px;
+    .top-header-container {
+        width: 100%;
+        height: $header-top-height;
         display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-        .title {
-            margin: auto;
 
-            h1.title-text {
-                font-size: 2rem;
-                color: $header-font-color;
-                font-family: $main-font-family;
-            }
-        }
-    }
-
-    .nav {
-        height: 100%;
-        width: auto;
-        z-index: 30;
-
-        .nav-btn-container {
+        .title-container {
             height: 100%;
+            width: 250px;
             display: flex;
-            flex-direction: row;
 
-            .nav-btn {
-                display: flex;
-                flex-direction: row;
-                height: 100%;
-                user-select: none;
-                cursor: pointer;
-                transform: translateY(-100%);
-                animation: drop-in $nav-transition-properties;
-                animation-fill-mode: forwards;
+            .title {
+                margin: auto;
 
-                .nav-btn-text {
-                    margin: auto 20px;
-                    font-size: 1.1rem;
+                h1.title-text {
+                    font-size: 2rem;
                     color: $header-font-color;
                     font-family: $main-font-family;
-                    display: flex;
-                    flex-direction: row;
-
-                    p {
-                        padding: 0 0 0 10px;
-                    }
-
-                    i {
-                        font-size: 1.1rem;
-                        padding: 2px 0 0 0;
-                    }
-                }
-
-
-                &:hover {
-                    background-color: $header-background-light;
                 }
             }
+        }
 
-            @media screen and (max-width: 500px) {
-                &.open {
-                    position: absolute;
-                    left: 0;
-                    top: $header-height;
-                    background-color: $header-background-color;
-                    display: flex !important;
+        .nav {
+            height: 100%;
+            width: auto;
+            z-index: 30;
+
+            .nav-btn-container {
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+
+                .nav-btn {
+                    display: flex;
+                    flex-direction: row;
                     height: 100%;
-                    width: 100%;
-                    justify-content: space-evenly;
-                    box-shadow: $default-box-shadow;
-                    animation: float-in $intro-transition-properties;
-                    z-index: 20;
-                    transform-origin: right;
+                    user-select: none;
+                    cursor: pointer;
+                    transform: translateY(-100%);
+                    animation: drop-in $nav-transition-properties;
+                    animation-fill-mode: forwards;
 
-                    .nav-btn {
-                        animation: none;
-                        transform: none;
+                    .nav-btn-text {
+                        margin: auto 20px;
+                        font-size: 1.1rem;
+                        color: $header-font-color;
+                        font-family: $main-font-family;
+                        display: flex;
+                        flex-direction: row;
 
-                        .nav-btn-text {
-                            p {
-                                display: inline;
+                        p {
+                            padding: 0 0 0 10px;
+                        }
+
+                        i {
+                            font-size: 1.1rem;
+                            padding: 2px 0 0 0;
+                        }
+                    }
+
+
+                    &:hover {
+                        background-color: $header-background-light;
+                    }
+                }
+
+                @media screen and (max-width: 500px) {
+                    &.open {
+                        position: absolute;
+                        left: 0;
+                        top: $header-height;
+                        background-color: $header-background-color;
+                        display: flex !important;
+                        height: $header-top-height;
+                        width: 100%;
+                        justify-content: space-evenly;
+                        box-shadow: $default-box-shadow;
+                        animation: float-in $intro-transition-properties;
+                        z-index: 20;
+                        transform-origin: right;
+
+                        .nav-btn {
+                            animation: none;
+                            transform: none;
+
+                            .nav-btn-text {
+                                p {
+                                    display: inline;
+                                }
                             }
                         }
                     }
+
+                    &.closing {
+                        animation: float-out $outro-transition-properties;
+                        animation-fill-mode: forwards;
+                    }
                 }
 
-                &.closing {
-                    animation: float-out $outro-transition-properties;
-                    animation-fill-mode: forwards;
+
+            }
+
+            .nav-expand-btn {
+                width: $header-top-height;
+                height: 100%;
+                display: none;
+                margin: 0 10px 0 0;
+
+                #nav-expand-icon {
+                    display: flex;
+                    width: 60%;
+                    height: 60%;
+                    margin: auto;
+                    position: relative;
+                    transform: rotate(0deg);
+                    transition: .5s ease-in-out;
+                    cursor: pointer;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    transition: $nav-transition-properties;
                 }
-            }
 
+                #nav-expand-icon.open {
+                    transform: rotate(180deg);
+                }
 
-        }
+                #nav-expand-icon span {
+                    position: relative;
+                    display: block;
+                    height: 5px;
+                    width: 100%;
+                    background: $header-font-color;
+                    border-radius: 9px;
+                    opacity: 1;
+                    transition: $nav-transition-properties;
+                }
 
-        .nav-expand-btn {
-            width: $header-height;
-            height: 100%;
-            display: none;
-            margin: 0 10px 0 0;
+                #nav-expand-icon span:nth-child(2) {
+                    position: absolute;
+                    margin: auto;
+                }
 
-            #nav-expand-icon {
-                display: flex;
-                width: 60%;
-                height: 60%;
-                margin: auto;
-                position: relative;
-                transform: rotate(0deg);
-                transition: .5s ease-in-out;
-                cursor: pointer;
-                flex-direction: column;
-                justify-content: space-around;
-                transition: $nav-transition-properties;
-            }
+                #nav-expand-icon span:nth-child(3) {
+                    position: absolute;
+                    margin: auto;
+                }
 
-            #nav-expand-icon.open {
-                transform: rotate(180deg);
-            }
+                #nav-expand-icon.open span:nth-child(1),
+                #nav-expand-icon.open span:nth-child(4) {
+                    transform: scale(0);
+                }
 
-            #nav-expand-icon span {
-                position: relative;
-                display: block;
-                height: 5px;
-                width: 100%;
-                background: $header-font-color;
-                border-radius: 9px;
-                opacity: 1;
-                transition: $nav-transition-properties;
-            }
+                #nav-expand-icon.open span:nth-child(2) {
+                    transform: rotate(45deg);
+                }
 
-            #nav-expand-icon span:nth-child(2) {
-                position: absolute;
-                margin: auto;
-            }
-
-            #nav-expand-icon span:nth-child(3) {
-                position: absolute;
-                margin: auto;
-            }
-
-            #nav-expand-icon.open span:nth-child(1),
-            #nav-expand-icon.open span:nth-child(4) {
-                transform: scale(0);
-            }
-
-            #nav-expand-icon.open span:nth-child(2) {
-                transform: rotate(45deg);
-            }
-
-            #nav-expand-icon.open span:nth-child(3) {
-                transform: rotate(-45deg);
+                #nav-expand-icon.open span:nth-child(3) {
+                    transform: rotate(-45deg);
+                }
             }
         }
     }
+
+
 
     &.nav-up {
         top: -100%;
@@ -188,6 +201,43 @@ body {
 
     &.nav-down {
         top: 0;
+    }
+
+    .category-tabs {
+        height: $header-top-height;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        .category-tab {
+            height: 100%;
+            width: auto;
+            display: flex;
+            padding: 0 20px;
+            cursor: pointer;
+
+            .tab-text {
+                margin: auto;
+                color: $header-font-color;
+                font-family: $second-font-family;
+                font-size: 1.1rem;
+                user-select: none;
+            }
+
+            &.active {}
+        }
+
+        .tab-line {
+            display: none;
+            height: 3px;
+            width: 100px;
+            background-color: $header-font-color;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: all $intro-transition-properties;
+            animation: flow-in $intro-transition-properties;
+        }
     }
 }
 
@@ -200,67 +250,84 @@ body {
 
     .articles-section {
         width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        height: calc(100% - #{$header-height});
         margin: auto;
-        padding-top: $header-height;
+        margin-top: $header-height;
         transition: padding $nav-transition-properties;
-        justify-content: space-evenly;
+        overflow-x: hidden;
+        overflow-y: visible;
+        position: relative;
 
-        .article-section {
-            width: 500px;
-            margin: 20px 0;
-            padding: 20px 20px 60px 20px;
-            box-shadow: $article-box-shadow;
-            border-radius: 2px;
+        .articles-container {
+            position: absolute;
             display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            animation: flow-in $intro-transition-properties;
-            background-color: $background-color;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            transition: transform $intro-transition-properties;
+            transform: translateX(0);
 
-            a {
-                text-decoration: none;
-                color: $font-color-shaded;
-            }
-
-            .article-container {
+            .article-section {
+                width: 500px;
+                margin: 20px 0;
+                padding: 20px 20px 60px 20px;
+                box-shadow: $article-box-shadow;
+                border-radius: 2px;
                 display: flex;
                 flex-direction: column;
+                position: relative;
+                overflow: hidden;
+                animation: flow-in $intro-transition-properties;
+                background-color: $background-color;
 
-                .article-title {
-                    font-size: 1.5rem;
-                    font-family: $second-font-family;
-                    font-weight: 100;
-                    color: $font-color;
+                a {
+                    text-decoration: none;
+                    color: $font-color-shaded;
                 }
 
-                .article-content-container {
+                .article-container {
                     display: flex;
-                    flex-direction: row;
+                    flex-direction: column;
 
-                    .article-preview-text {
+                    .article-title {
+                        font-size: 1.5rem;
                         font-family: $second-font-family;
-                        padding: 30px 0 0 0;
+                        font-weight: 100;
+                        color: $font-color;
                     }
 
-                    .article-image {
-                        height: 200px;
-                        width: 200px;
-                        padding: 30px 20px 0 0;
+                    .article-content-container {
+                        display: flex;
+                        flex-direction: row;
+
+                        .article-preview-text {
+                            font-family: $second-font-family;
+                            padding: 30px 0 0 0;
+                        }
+
+                        .article-image {
+                            height: 200px;
+                            width: 200px;
+                            padding: 30px 20px 0 0;
+                        }
                     }
+                }
+
+                .article-page {
+                    position: absolute;
+                    right: 20px;
+                    bottom: 20px;
+                    font-family: $second-font-family;
+                    color: $font-color;
                 }
             }
 
-            .article-page {
-                position: absolute;
-                right: 20px;
-                bottom: 20px;
-                font-family: $second-font-family;
-                color: $font-color;
+            &.to-left{
+                transform: translateX(-100vw);
+            }
+
+            &.to-right{
+                transform: translateX(100vw);
             }
         }
     }
@@ -292,6 +359,7 @@ body {
         padding: 20px;
         text-align: center;
         transition: transform $header-transition-properties;
+        background-color: $background-color-dark;
 
         .loading-message {
             font-family: $main-font-family;

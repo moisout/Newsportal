@@ -115,3 +115,21 @@
         display: none;
     }
 }
+
+@keyframes move-in-from-right{
+    0%{
+        transform: translateX(100vw);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes move-in-from-left{
+    0%{
+        transform: translateX(-100vw);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}

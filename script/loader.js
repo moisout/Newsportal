@@ -2,8 +2,9 @@ function bodyLoaded() {
     let components = [
         'newsportal',
         'articleLoader',
-        'scrollHandler',
-        'settings'
+        'ScrollHandler',
+        'settings',
+        'pagesHandler'
     ];
 
     let loadCount = 0;
@@ -28,14 +29,21 @@ function bodyLoaded() {
         settingsHander.initSettings();
         settingsHander.loadSettings();
 
+        let categories = [
+            'all',
+            'digital'
+        ];
+
         let newsportal = new Newsportal();
         newsportal.initHeader();
-
-        let scrollhandler = new scrollHandler();
-        scrollhandler.initHeaderScroll();
+        newsportal.initCategories(categories);
 
         let articleLoader = new ArticleLoader(newsportal);
-        await articleLoader.loadDebugArticle();
+        await articleLoader.loadArticles(categories[0]);
+        await articleLoader.loadArticles(categories[1]);
+
+        let pagesHandler = new PagesHandler();
+        pagesHandler.initTabs();
     
         $('.loading-container').addClass('hidden');
     }

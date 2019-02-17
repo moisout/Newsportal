@@ -1,5 +1,5 @@
-function scrollHandler() {
-    this.didScroll;
+function ScrollHandler() {
+    this.didScroll = false;
     this.lastScrollTop = 0;
     this.delta = 5;
     this.headerHeight = $('.header').outerHeight();
@@ -8,11 +8,11 @@ function scrollHandler() {
         let me = this;
         $(window).scroll(this.setScrolled);
         setInterval(function () {
-            if (this.didScroll) {
+            if (me.didScroll) {
                 me.handleHeaderScroll();
                 me.didScroll = false;
             }
-        }, 250);
+        }, 500);
     }
 
     this.setScrolled = function () {
@@ -21,9 +21,10 @@ function scrollHandler() {
 
     this.handleHeaderScroll = function () {
         let me = this;
-        let scrollPosition = $(document).scrollTop();
+        let scrollPosition = $('.articles-section').scrollTop();
+        console.log('scrollPosition');
 
-        if (Math.abs(this.lastScrollTop - scrollPosition) <= this.delta){
+        if (Math.abs(this.lastScrollTop - scrollPosition) <= this.delta) {
             return;
         }
 
@@ -36,5 +37,4 @@ function scrollHandler() {
 
         this.lastScrollTop = scrollPosition;
     }
-
 }
