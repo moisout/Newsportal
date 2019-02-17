@@ -2,7 +2,7 @@ function bodyLoaded() {
     let components = [
         'newsportal',
         'articleLoader',
-        'ScrollHandler',
+        'scrollHandler',
         'settings',
         'pagesHandler'
     ];
@@ -31,7 +31,8 @@ function bodyLoaded() {
 
         let categories = [
             'all',
-            'digital'
+            'digital',
+            'schweiz'
         ];
 
         let newsportal = new Newsportal();
@@ -39,12 +40,16 @@ function bodyLoaded() {
         newsportal.initCategories(categories);
 
         let articleLoader = new ArticleLoader(newsportal);
-        await articleLoader.loadArticles(categories[0]);
-        await articleLoader.loadArticles(categories[1]);
+        await categories.forEach(async function (element) {
+            await articleLoader.loadArticles(element);
+        })
+
 
         let pagesHandler = new PagesHandler();
         pagesHandler.initTabs();
-    
+
         $('.loading-container').addClass('hidden');
     }
 }
+geblueck_newsp
+diF5BGXS
