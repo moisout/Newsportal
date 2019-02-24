@@ -51,5 +51,3 @@ function bodyLoaded() {
         $('.loading-container').addClass('hidden');
     }
 }
-geblueck_newsp
-diF5BGXS
