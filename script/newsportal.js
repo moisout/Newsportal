@@ -1,7 +1,7 @@
 function Newsportal() {
     this.debugUrl = '../../News-API';
     this.prodUrl = 'https://maurice.oeger.li/News-API';
-    this.apiUrl;
+    this.apiUrl = 'https://maurice.oeger.li/News-API';
     this.articleLoader = new ArticleLoader(this);
 
     this.initHeader = function () {
@@ -20,27 +20,30 @@ function Newsportal() {
         });
     }
 
-    this.initCategories = function (categories) {
-        categories.forEach((element, index) => {
-            let tabTemplate = `<div id="tab-${element}" class="category-tab">
-            <p class="tab-text">${element}</p></div>`;
+    this.initCategories = function () {
+        let me = this;
+        $.ajax({
+                type: "GET",
+                url: `${me.apiUrl}/getCategories.php`,
+                dataType: "json",
+            })
+            .done(function (data) {
+                data.forEach((element, index) => {
+                    const id = element.categories_id;
+                    const name = element.categories_name;
+                    const fullName = element.categories_fullName;
+                    let tabTemplate = `<div id="tab-${name}" class="category-tab">
+                    <p class="tab-text">${fullName}</p></div>`;
 
-            $('.articles-section').append(`<div class="articles-container to-right" id="articles-section-${element}" section-nr="${index}"></div>`);
-            $('.category-tabs').append(tabTemplate);
+                    $('.articles-section').append(`<div class="articles-container to-right" id="articles-section-${name}" section-nr="${index}"></div>`);
+                    $('.category-tabs').append(tabTemplate);
 
-            if (index == 0) {
-                console.log($(`#tab-${element}`));
-                $(`#tab-${element}`).addClass('active-tab');
-            }
-        });
-    }
+                    if (index == 0) {
+                        $(`#tab-${name}`).addClass('active-tab');
+                    }
+                });
+            });
 
-    let debug = location.href.includes('localhost');
-    if (debug === true) {
-        this.apiUrl = this.debugUrl;
-        console.warn('Running in debug mode');
-    } else {
-        this.apiUrl = this.prodUrl;
     }
 }
 //# sourceURL=newsportal.js

@@ -51,37 +51,41 @@ function ArticleLoader(newsportal) {
                     },
                 })
                 .done(function (data) {
-                    console.log(data);
-                    let articles = [];
-                    data.forEach(element => {
-                        element.channel.item.forEach(item => {
-                            item['name'] = element.channel.title;
-                            articles.push(item);
+                        console.log(
+                            data
+                        );
+                        let articles = [];
+                        data.forEach(
+                            element => {
+                                element.channel.item.forEach(
+                                    item => {
+                                        item['name'] = element.channel.title;
+                                        articles.push(item);
+                                    });
+
+                            });
+
+                        articles.sort(function compare(a, b) {
+                            let dateA = new Date(a.pubDate);
+                            let dateB = new Date(b.pubDate);
+                            return dateB - dateA;
                         });
 
-                    });
+                        articles.forEach((element, index) => {
+                            let title = element.title;
+                            let description = element.description;
+                            let name = element.name;
+                            let link = element.link;
+                            let thumbnail = '';
+                            let date = element.pubDate;
+                            if (typeof articles[index].thumbnail != 'undefined') {
+                                thumbnail = articles[index].thumbnail['@attributes'].url;
+                            }
+                            me.loadArticle(title, description, name, link, thumbnail, date, category);
+                        });
 
-                    articles.sort(function compare(a, b) {
-                        let dateA = new Date(a.pubDate);
-                        let dateB = new Date(b.pubDate);
-                        return dateB - dateA;
+                        resolve(data);
                     });
-
-                    articles.forEach((element, index) => {
-                        let title = element.title;
-                        let description = element.description;
-                        let name = element.name;
-                        let link = element.link;
-                        let thumbnail = '';
-                        let date = element.pubDate;
-                        if (typeof articles[index].thumbnail != 'undefined') {
-                            thumbnail = articles[index].thumbnail['@attributes'].url;
-                        }
-                        me.loadArticle(title, description, name, link, thumbnail, date, category);
-                    });
-
-                    resolve(data);
-                });
         });
     }
 }

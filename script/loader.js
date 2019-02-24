@@ -11,10 +11,10 @@ function bodyLoaded() {
 
     components.forEach(element => {
         $.ajax({
-            url: `script/${element}.js`,
-            crossDomain: true,
-            dataType: "script",
-        })
+                url: `script/${element}.js`,
+                crossDomain: true,
+                dataType: "script",
+            })
             .done(function () {
                 loadCount++;
 
@@ -40,10 +40,14 @@ function bodyLoaded() {
         newsportal.initCategories(categories);
 
         let articleLoader = new ArticleLoader(newsportal);
-        await categories.forEach(async function (element) {
-            await articleLoader.loadArticles(element);
+        await new Promise(function (resolve, reject) {
+            categories.forEach(async function (element, index) {
+                await articleLoader.loadArticles(element);
+                if (index === categories.length- 1) {
+                    resolve(element);
+                }
+            })
         })
-
 
         let pagesHandler = new PagesHandler();
         pagesHandler.initTabs();
