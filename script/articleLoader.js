@@ -39,53 +39,52 @@ function ArticleLoader(newsportal) {
     this.loadArticles = function (category) {
         let me = this;
         return new Promise(function (resolve, reject) {
+            let sources = me.newsportal.settingsHandler.settings.sources.map(element => {
+                return element['name'];
+            });
             $.ajax({
                     url: `${me.newsportal.apiUrl}/getNewArticles.php`,
+                    crossDomain: true,
                     data: {
-                        "sources": [
-                            "NZZ",
-                            "Golem.de",
-                            "Lineageos"
-                        ],
+                        "sources": sources,
                         "category": category
                     },
                 })
                 .done(function (data) {
-                        console.log(
-                            data
-                        );
-                        let articles = [];
-                        data.forEach(
-                            element => {
-                                element.channel.item.forEach(
-                                    item => {
-                                        item['name'] = element.channel.title;
-                                        articles.push(item);
-                                    });
+                    let articles = [];
+                    data.forEach(
+                        element => {
+                            element.channel.item.forEach(
+                                item => {
+                                    item['name'] = element.channel.title;
+                                    articles.push(item);
+                                });
 
-                            });
-
-                        articles.sort(function compare(a, b) {
-                            let dateA = new Date(a.pubDate);
-                            let dateB = new Date(b.pubDate);
-                            return dateB - dateA;
                         });
 
-                        articles.forEach((element, index) => {
-                            let title = element.title;
-                            let description = element.description;
-                            let name = element.name;
-                            let link = element.link;
-                            let thumbnail = '';
-                            let date = element.pubDate;
-                            if (typeof articles[index].thumbnail != 'undefined') {
-                                thumbnail = articles[index].thumbnail['@attributes'].url;
-                            }
-                            me.loadArticle(title, description, name, link, thumbnail, date, category);
-                        });
-
-                        resolve(data);
+                    articles.sort(function compare(a, b) {
+                        let dateA = new Date(a.pubDate);
+                        let dateB = new Date(b.pubDate);
+                        return dateB - dateA;
                     });
+
+                    articles.forEach((element, index) => {
+                        let title = element.title;
+                        let description = element.description;
+                        let name = element.name;
+                        let link = element.link;
+                        let thumbnail = '';
+                        let date = element.pubDate;
+                        if (typeof articles[index].thumbnail != 'undefined') {
+                            thumbnail = articles[index].thumbnail['@attributes'].url;
+                        }
+                        me.loadArticle(title, description, name, link, thumbnail, date, category);
+
+                        if (index == articles.length - 1) {
+                            resolve(data);
+                        }
+                    });
+                });
         });
     }
 }

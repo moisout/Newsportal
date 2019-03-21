@@ -35,15 +35,15 @@ function bodyLoaded() {
             'schweiz'
         ];
 
-        let newsportal = new Newsportal();
+        let newsportal = new Newsportal(settingsHander);
         newsportal.initHeader();
-        newsportal.initCategories(categories);
+        await newsportal.initCategories(categories);
 
         let articleLoader = new ArticleLoader(newsportal);
         await new Promise(function (resolve, reject) {
             categories.forEach(async function (element, index) {
                 await articleLoader.loadArticles(element);
-                if (index === categories.length- 1) {
+                if (index === categories.length - 1) {
                     resolve(element);
                 }
             })
